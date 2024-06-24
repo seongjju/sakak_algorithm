@@ -15,3 +15,14 @@ def sequence(n):
             i+=1
         cur=''.join(li)
     return cur
+
+def print_middle(n):
+    answer = sequence(n)
+    index = len(answer) // 2
+    result1 = answer[index-1]
+    result2 = answer[index]
+    result = result1+result2
+    return int(result)
+
+
+
