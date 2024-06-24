@@ -1,20 +1,22 @@
-def sequence(n):
-    if n==1:
-        return "1"
-    cur="1"
-    for _ in range(2,n+1):
-        i=0
-        li=[]
-        while i<len(cur):
-            count=1
-            while i+1<len(cur) and cur[i] == cur[i+1]:
-                count+=1
-                i+=1
-            li.append(str(count))
-            li.append(cur[i])
+def sequence(n, dic={1: "1"}):
+    if n in dic:
+        return dic[n]
+    
+    cur = sequence(n - 1, dic)
+    i = 0
+    li = []
+
+    while i<len(cur):
+        count=1
+        while i+1<len(cur) and cur[i] == cur[i+1]:
+            count+=1
             i+=1
-        cur=''.join(li)
-    return cur
+        li.append(str(count))
+        li.append(cur[i])
+        i+=1
+    dic[n] = ''.join(li)
+    return dic[n]
+
 
 def print_middle(n):
     answer = sequence(n)
